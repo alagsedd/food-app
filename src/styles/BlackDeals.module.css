@@ -1,0 +1,23 @@
+.parent {
+    margin-bottom: 0.5rem;
+}
+.header {
+    margin-top: 0.5rem;
+    margin-left: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+.header span {
+    font-size: 1.3rem;
+    letter-spacing: 0.01rem;
+    color: #fff;
+}
+.foodDisplay {
+    display: flex;
+    overflow-x: scroll;
+}
+.link {
+    color: inherit;
+    text-decoration: none;
+}

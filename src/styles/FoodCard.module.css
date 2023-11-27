@@ -1,0 +1,27 @@
+.parent {
+    border: 10px;
+    margin: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid  rgb(48, 64, 79);
+}
+.image {
+    border: 10px;
+    width: 13rem;
+    object-fit: cover;
+    height: 10rem;
+}
+.other {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem;
+}
+.name {
+    font-weight: 700;
+    letter-spacing: 0.01rem;
+    font-size: 1.2rem;
+}
+.price {
+    margin: 0.5rem;
+}
