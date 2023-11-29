@@ -1,4 +1,5 @@
 .parent {
+    height: 14rem;
     width: 15rem;
     border: 10px;
     margin: 0.5rem;
@@ -11,7 +12,7 @@
     border: 10px;
     width: 100%;
     object-fit: cover;
-    height: 7rem;
+    height: 9rem;
 }
 .other {
     display: flex;
@@ -26,7 +27,6 @@
 .price {
     margin: 0.5rem;
 }
-
 @media screen and (min-width: 375px) {
     .parent {
         width: 10.2rem;
@@ -42,15 +42,17 @@
         width: 10.7rem;
     }
 }
-
 @media screen and (min-width: 800px) {
     .parent {
         width: 13rem;
+        height: 18rem;
     }
 }
+
 @media screen and (min-width: 900px) {
     .parent {
         width: 16rem;
+        height: 18rem;
     }
     
     .image {

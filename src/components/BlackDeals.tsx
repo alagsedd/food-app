@@ -1,5 +1,4 @@
 import styles from "../styles/BlackDeals.module.css";
-import { FaFaceGrinStars } from "react-icons/fa6";
 import hotdog1 from "../assets/Images/hot-dog1.avif";
 import burger1 from "../assets/Images/burger1.jpg";
 import pizza from "../assets/Images/pizza.jpeg";
@@ -19,9 +18,7 @@ const BlackDeals = () => {
   return (
     <div className={styles.parent}>
       <h2 className={styles.header}>
-        <span>
-          Black Deals <FaFaceGrinStars color="yellow" size="18" />{" "}
-        </span>
+        <span>Black Deals </span>
       </h2>
 
       <div className={styles.foodDisplay}>

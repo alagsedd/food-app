@@ -9,3 +9,14 @@ body {
     color: #b2b2b6;
     background-color: rgba(26,29,33,255) !important;
 }
+
+@media screen and (min-width: 1000px) {
+    .parent {
+        margin: 0 4rem;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .parent {
+        margin: 0 8rem;
+    }
+}

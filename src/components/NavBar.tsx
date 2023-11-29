@@ -7,40 +7,56 @@ import { FaRegNewspaper } from "react-icons/fa6";
 import { MdEventNote } from "react-icons/md";
 import { IoLogIn } from "react-icons/io5";
 import { Link } from "react-router-dom";
-import { IoSearchOutline } from "react-icons/io5";
 
 const NavBar = () => {
   const [toggleMenu, setToggleMenu] = useState(false);
   return (
     <>
       <nav className={styles.nav}>
-        <IoMenuSharp onClick={() => setToggleMenu(true)} size="30" />
+        <IoMenuSharp
+          className={styles.menu}
+          onClick={() => setToggleMenu(true)}
+          size="30"
+        />
 
-        <div className={styles.searchBox}>
-          <IoSearchOutline className={styles.searchButton} size="20" />{" "}
+        {/* <div className={styles.searchBox}>
           <input
-            placeholder="Foods and snacks"
+            placeholder=" Search Foods and snacks"
             className={styles.input}
             type="text"
           />
-        </div>
+        </div> */}
+        <span className={styles.brandName}>A-Bakes</span>
+
         <ul className={styles.ul1}>
           <li>
-            <FaHome className={styles.icon} size="25" /> <span>Home</span>
+            <Link className={styles.link} to={"/"}>
+              {" "}
+              <FaHome className={styles.icon} size="23" /> <span>Home</span>
+            </Link>{" "}
           </li>
+
           <li>
-            <FaRegNewspaper className={styles.icon} size="25" />
-            <span>News</span>
+            {" "}
+            <Link className={styles.link} to={"#"}>
+              {" "}
+              <FaRegNewspaper className={styles.icon} size="23" />
+              <span>News</span>
+            </Link>
           </li>
+
           <li>
-            <MdEventNote className={styles.icon} size="25" />{" "}
-            <span>Events</span>
+            {" "}
+            <Link className={styles.link} to={"#"}>
+              <MdEventNote className={styles.icon} size="23" />{" "}
+              <span>Events</span>
+            </Link>
           </li>
+
           <li>
             <Link className={styles.link} to={"sign-up"}>
               {" "}
-              <IoLogIn className={styles.icon} size="25" />{" "}
-              <span>Login/Sign up</span>
+              <IoLogIn className={styles.icon} size="23" /> <span>Sign up</span>
             </Link>
           </li>
         </ul>

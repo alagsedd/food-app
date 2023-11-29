@@ -1,0 +1,117 @@
+.parent {
+    padding: 0.4rem;
+    opacity: 0.9;
+    border-bottom: 1px solid #fff;
+}
+.header {
+    display: flex;
+    justify-content: center;
+    padding: 0.1rem;
+    margin: 0.5rem;
+}
+.header span {
+    font-family: 'Courier New', Courier, monospace;
+    color: #fff;
+    font-size: 1.3rem;
+    animation: border 2s 2s infinite;
+}
+@keyframes border {
+    0%  {
+        border-bottom: 1px solid aqua;
+    }
+    100%  {
+        border-bottom: 1px solid deeppink;
+    }
+}
+.image {
+    filter: contrast(110%);
+    width: 100%;
+    height: 12rem;
+    object-fit: cover;
+}
+.ol {
+    margin: 1.5rem;
+}
+.ol li {
+    padding: 0.1rem;
+    line-height: 1.9rem;
+}
+.desc {
+    margin: 0.3rem;
+    padding: 0.6rem;
+}
+
+@media screen and (min-width: 375px) {
+    .header span {
+        font-size: 1.8rem;
+    }
+    .image {
+        height: 15rem;
+    }
+}
+@media screen and (min-width: 475px) {
+    .image {
+        height: 17rem;
+    }
+    .header span {
+        font-size: 2rem;
+    }
+    .header {
+        margin-bottom: 0;
+    }
+    .desc {
+        margin-top: 0;
+    }
+}
+@media screen and (min-width: 800px) {
+    .parent {
+        display: grid;
+        grid-template-columns: 50fr 50fr;
+        grid-template-rows: 50fr 50fr;
+        column-gap: 0.5rem;
+        row-gap: 0.5rem;
+        margin-bottom: 2rem;
+    }
+    .image {
+        grid-column: 1 / 2;
+        grid-row: 1 / -1;
+        height: 20rem;
+    }
+    .desc {
+        grid-column: 2 / 3;
+        grid-column: 2 / 3;
+        animation: border2 3s 2s ease-in infinite;
+    }
+    @keyframes border2 {
+        0% {
+            border-top: 1px solid aqua;
+        }
+        40% {
+            border-right: 1px solid deeppink;
+        }
+        80% {
+            border-bottom: 1px solid rgb(0, 255, 26);
+        }
+        100% {
+            border-left: 1px solid rgb(13, 0, 255)
+        }
+    }
+
+    .ol {
+        grid-row: 1 / 3;
+        grid-column: 2 / 3;
+    }
+}
+
+@media screen and (min-width: 900px) {
+    .header span {
+        font-size: 2.5rem;
+    }
+    .header {
+        margin-bottom: 1rem;
+    }
+    .parent {
+        
+    margin-bottom: 4rem;
+    }
+}

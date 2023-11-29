@@ -1,7 +1,7 @@
 .nav {
     border-radius: 5px;
     margin: 0.3rem;
-    padding: 0.1rem;
+    padding: 0.2rem;
     background-color:  rgb(35, 46, 56);
     display: flex;
     align-items: center;
@@ -10,9 +10,7 @@
     display: none;
     list-style-type: none;
 }
-.ul li {
-    margin-left: 1rem;
-}
+
 .ul2 {
     padding: 0.5rem;
     border: 1px solid ;
@@ -50,7 +48,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-left: 0.3rem;
+    padding: 0.2rem;
     background-color:  inherit;
 
 }
@@ -68,4 +66,123 @@
 }
 .input::placeholder {
     color: #fff;
+}
+.brandName  {
+    display: none;
+    color: #fff;
+}
+
+@media screen and (min-width: 300px) {
+    .menu {
+        margin-left: 0.5rem;
+    }
+    .searchBox {
+        width: 20rem;
+        margin-left: 1rem;
+    }
+}
+@media screen and (min-width: 500px) {
+    .menu {
+        margin-left: 0.5rem;
+    }
+    .searchBox {
+        width: 20rem;
+        margin-left: 2rem;
+    }
+    .link {
+        padding: 0.3rem 0.6rem;
+    }
+}
+@media screen and (min-width: 800px) {
+    .nav {
+        /* border: 2px solid #fff; */
+    }
+    
+    .brandName {
+        display: flex;
+        margin-left: 1rem;
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: 0.1rem;
+        margin-right: 3rem;
+    }
+    .icon {
+        /* border: 3px solid #df3939; */
+    }
+    .link {
+        padding: 0.3rem 0.6rem;
+        display: flex;
+        align-items: center;
+        border: 1px solid  rgb(48, 64, 79);
+    }
+    .menu {
+        display: none;
+    }
+    .ul1 {
+        width: 70%;
+        display: flex;
+        justify-content: space-around;
+    }
+    .link:hover {
+        animation: border 1s 0.3s infinite;
+    }
+    @keyframes border {
+        0% {
+            border-top: 1px solid aqua;
+        }
+        30% {
+            border-right: 1px solid aqua;
+        }
+        60% {
+            border-bottom: 1px solid aqua;
+        }
+        80% {
+            border-left: 1px solid aqua;
+        }
+    }
+    .ul1 li {
+        margin-left: 1rem;
+        
+        display: flex;
+        align-items: center;
+    }
+    .searchBox {
+        /* background-color: deeppink; */
+        width: 13rem;
+        margin-left: 2rem;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .ul1 {
+        width: 55%;
+    }
+    .brandName {
+        margin-right: 17rem;
+    }
+}
+@media screen and (min-width: 1000px) {
+    .ul1 {
+        width: 49%;
+    }
+    .brandName {
+        margin-right: 18rem;
+        margin-left: 3rem;
+    }
+}
+@media screen and (min-width: 1200px) {
+    .ul1 {
+        width: 45%;
+    }
+    .brandName {
+        margin-right: 26rem;
+    }
+}
+@media screen and (min-width: 1300px) {
+    .ul1 {
+        width: 40%;
+    }
+    .brandName {
+        margin-right: 26rem;
+    }
 }

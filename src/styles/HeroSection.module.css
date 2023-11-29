@@ -1,16 +1,13 @@
 .parent {
+    background-position: center;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     height: 17rem;
-    background-image: url("/src/assets/Images/backgroung-img.jpg");
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: scroll;
 }
 .header {
+    margin-top: 1rem;
     display: flex;
     justify-content: center;
 }
@@ -18,12 +15,99 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     color: #fff;
     font-size: 1.7rem;
+    animation: border 1s  0.5s infinite;
 }
+
 .desc {
+    width: 16rem;
     opacity: 0.8;
     padding: 0.7rem;
     background-color: #141418;
     margin: 0.5rem;
     color: #fff;
     font-size: 1.1rem;
+}
+.buttonBox {
+    display: flex;
+    justify-content: center;
+}
+.subImage {
+    width: 3.2rem;
+    height: 3.2rem;
+    object-fit: cover;
+    margin-bottom: 0.5rem;
+}
+.main {
+    width: auto;
+}
+.subs {
+    display: flex;
+    width: 60%;
+    height: 100%;
+    align-items: flex-end;
+    justify-content: space-evenly;
+}
+@media screen and (min-width: 500px) {
+    .header {
+        width: 18rem;
+    }
+    .header span {
+        font-size: 2.3rem;
+    }
+    .main {
+        margin-left: 1rem;
+    }
+    .parent {
+        display: flex;
+        flex-direction: row;
+        height: 20rem;
+    }
+    .buttonBox {
+        width: 18rem;
+    }
+    .desc {
+        font-size: 1.2rem;
+        width: 18rem;
+    }
+}
+@media screen and (min-width: 575px) {
+    .parent {
+        height: 25rem;
+    }
+}
+@media screen and (min-width: 800px) {
+    .parent {
+        background-position: center;
+        height: 30rem;
+    }
+    .header {
+        width: auto;
+    }
+    .header span {
+        font-size: 2.5rem;
+    }
+    .desc {
+        width: 30rem;
+        font-size: 1.2rem;
+    }
+    .buttonBox {
+        width: 30rem;
+        font-size: 14rem;
+    }
+    .main {
+        margin-top: 3rem;
+        margin-left: 1rem;
+    }
+}
+@media screen and (min-width: 900px) {
+    .parent {
+        height: 35rem;
+        margin-bottom: 2rem;
+    }
+    .header span {
+        font-size: 3.5rem;
+    }
+    .desc {
+        font-size: 1.4rem;
+    }
 }
