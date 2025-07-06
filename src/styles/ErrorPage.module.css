@@ -1,0 +1,99 @@
+/* Ensure your :root variables from global.css are available or defined here */
+:root {
+  --bg-dark: #1A1A2E;
+  --bg-dark-light: #2A2A3E;
+  --text-light: #E0E0E0;
+  --text-muted: #B0B0B0;
+  --accent-gold: #FFC04D;
+  --accent-blue: #00ADB5;
+  --accent-pink: #FF6B6B;
+  --shadow-dark: rgba(0, 0, 0, 0.4);
+  --border-radius-md: 10px;
+  --font-family-heading: 'Playfair Display', serif;
+  --font-family-body: 'Lato', sans-serif;
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Make it full viewport height */
+  background-color: var(--bg-dark); /* Dark background */
+  color: var(--text-light); /* Light text for readability */
+  text-align: center;
+  padding: 2rem;
+  font-family: var(--font-family-body);
+}
+
+.errorCode {
+  font-family: var(--font-family-heading);
+  font-size: clamp(6rem, 15vw, 10rem); /* Large, responsive 404 */
+  color: var(--accent-gold); /* Prominent accent color */
+  margin-bottom: 1rem;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5); /* Subtle shadow */
+  animation: fadeInScale 1s ease-out; /* Animation for error code */
+}
+
+.errorMessage {
+  font-family: var(--font-family-heading);
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  color: var(--text-light);
+  margin-bottom: 1.5rem;
+  animation: fadeIn 1.2s ease-out 0.3s forwards; /* Delayed fade in */
+  opacity: 0; /* Start hidden for animation */
+}
+
+.errorDescription {
+  font-size: clamp(1rem, 2vw, 1.2rem);
+  color: var(--text-muted); /* Muted description */
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+  animation: fadeIn 1.2s ease-out 0.6s forwards; /* Delayed fade in */
+  opacity: 0; /* Start hidden for animation */
+}
+
+.homeButton {
+  display: inline-block;
+  padding: 0.9rem 2.5rem;
+  background-color: var(--accent-blue); /* Vibrant button color */
+  color: var(--text-light);
+  text-decoration: none;
+  border-radius: 50px; /* Pill shape */
+  font-weight: 600;
+  font-size: clamp(1rem, 2vw, 1.1rem);
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 173, 181, 0.4); /* Shadow matching button color */
+  animation: fadeIn 1.2s ease-out 0.9s forwards; /* Delayed fade in */
+  opacity: 0; /* Start hidden for animation */
+}
+
+.homeButton:hover {
+  background-color: var(--accent-gold); /* Gold on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 192, 77, 0.6); /* Gold shadow on hover */
+}
+
+/* --- Animations --- */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

@@ -2,6 +2,7 @@ import HeroSection from "./components/HeroSection";
 import BlackDeals from "./components/BlackDeals";
 import CustomerFavourites from "./components/CustomerFavourites";
 import Reason from "./components/Reason";
+import Footer from "./components/Footer";
 
 const HomePage = () => {
   return (
@@ -13,6 +14,7 @@ const HomePage = () => {
         <BlackDeals />
         {/* CustomerFavourites will be addressed in the next step, ensuring its styling matches */}
         <CustomerFavourites />
+        <Footer />
       </div>
     </>
   );
