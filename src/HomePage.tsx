@@ -6,10 +6,12 @@ import Reason from "./components/Reason";
 const HomePage = () => {
   return (
     <>
-      <div className="parent">
+      {/* Use the global-container class for consistent max-width and padding */}
+      <div className="global-container">
         <HeroSection />
         <Reason />
         <BlackDeals />
+        {/* CustomerFavourites will be addressed in the next step, ensuring its styling matches */}
         <CustomerFavourites />
       </div>
     </>

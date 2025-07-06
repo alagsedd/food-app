@@ -1,53 +1,53 @@
 import { Button } from "@mui/material";
 import styles from "../styles/HeroSection.module.css";
 import { FaShoppingCart } from "react-icons/fa";
-import background from "../assets/Images/backgroung-img.jpg";
+import background1 from "../assets/Images/backgroung-img.jpg"; // Renamed for clarity
 import background2 from "../assets/Images/background-2.jpg";
 import { useEffect, useState } from "react";
 
 const HeroSection = () => {
-  const [current, setCurrent] = useState(background);
+  const [currentBackground, setCurrentBackground] = useState(background1);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if (current === background) setCurrent(background2);
-      else setCurrent(background);
-    }, 10000);
+      // Toggle between background images
+      setCurrentBackground((prevBackground) =>
+        prevBackground === background1 ? background2 : background1
+      );
+    }, 10000); // Change image every 10 seconds
 
-    return () => clearInterval(timer);
-  }, [current]);
+    return () => clearInterval(timer); // Cleanup on component unmount
+  }, [currentBackground]); // Re-run effect if currentBackground changes
 
   return (
-    <div
+    <section
+      className={styles.heroContainer}
       style={{
-        backgroundImage: `url(${current})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
+        backgroundImage: `url(${currentBackground})`,
       }}
-      className={styles.parent}
     >
-      <div className={styles.main}>
-        {" "}
-        <h1 className={styles.header}>
-          <span>Alags Bakery</span>
-        </h1>
-        <p className={styles.desc}>
-          Alags bakery is dedicated to providing the best of services within
-          minimum hours. Grab a seat with us now!
+      <div className={styles.overlay}></div>{" "}
+      {/* Added for better text readability */}
+      <div className={styles.contentWrapper}>
+        <h1 className={styles.title}>Alags Bakery</h1>
+        <p className={styles.description}>
+          Experience the art of baking with **Alags Bakery**. We're dedicated to
+          delivering freshly baked goods and the best services right to your
+          doorstep, in minimal time.
         </p>
-        <div className={styles.buttonBox}>
-          {" "}
+        <div className={styles.buttonContainer}>
           <Button
-            size="small"
-            color="secondary"
+            size="large" // Changed to 'large' for more prominence
+            color="primary" // Assuming primary for main action, adjust your theme
             startIcon={<FaShoppingCart />}
             variant="contained"
+            className={styles.orderButton} // Add a class for custom styling
           >
-            Order now
+            Order Now
           </Button>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

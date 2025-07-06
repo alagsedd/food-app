@@ -4,7 +4,6 @@ import jollof from "../assets/Images/jollof-rice.jpg";
 import sandwich from "../assets/Images/homemade-sandwich-with-lettuce-ham-black-background-close-up_77190-102.avif";
 import wings from "../assets/Images/chickenwings.jpg";
 import tilapia from "../assets/Images/grilled-tilapia-fish-recipe-main-photo.jpg";
-
 import FavCard from "../cards/FavCard";
 import { Link } from "react-router-dom";
 
@@ -18,30 +17,31 @@ const CustomerFavourites = () => {
   ];
 
   return (
-    <>
-      {" "}
-      <h2 className={styles.header}>
-        <span>Your local favorites</span>
-      </h2>
-      <div className={styles.parent}>
-        {meals.map((i, index) => (
+    <section className={styles.section}>
+      <div className={styles.headerContainer}>
+        <h2 className={styles.sectionTitle}>
+          <span className={styles.titleText}>Your Local Favorites</span>
+          <span className={styles.titleDecoration}></span>
+        </h2>
+      </div>
+
+      <div className={styles.gridContainer}>
+        {meals.map((meal) => (
           <Link
-            key={index}
-            className={styles.link}
-            to={`/food-details/${i.name}`}
+            key={meal.id}
+            className={styles.cardLink}
+            to={`/food-details/${meal.name}`}
           >
-            {" "}
             <FavCard
-              key={i.id}
-              image={i.image}
-              name={i.name}
-              price={i.price}
-              rating={i.rating}
+              image={meal.image}
+              name={meal.name}
+              price={meal.price}
+              rating={meal.rating}
             />
           </Link>
         ))}
       </div>
-    </>
+    </section>
   );
 };
 

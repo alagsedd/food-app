@@ -7,6 +7,7 @@ import tilapia from "../assets/Images/grilled-tilapia-fish-recipe-main-photo.jpg
 
 import FoodCard from "../cards/FoodCard";
 import { Link } from "react-router-dom";
+
 const BlackDeals = () => {
   const meals = [
     { id: 1, name: "Alags Hotdogs", price: 30, image: hotdog1, rating: 5.3 },
@@ -15,30 +16,43 @@ const BlackDeals = () => {
     { id: 4, name: "Fried wings", price: 30, image: wings, rating: 3.3 },
     { id: 5, name: "Daddy Tilapia", price: 30, image: tilapia, rating: 4.3 },
   ];
-  return (
-    <div className={styles.parent}>
-      <h2 className={styles.header}>
-        <span>Black Deals </span>
-      </h2>
 
-      <div className={styles.foodDisplay}>
-        {meals.map((item, index) => (
-          <Link
-            className={styles.link}
-            key={index}
-            to={`/food-details/${item.name}`}
-          >
-            <FoodCard
+  return (
+    <section className={styles.blackDealsSection}>
+      {" "}
+      {/* Changed div to section */}
+      <h2 className={styles.sectionTitle}>
+        <span>Exclusive Black Deals!</span> {/* More engaging title */}
+      </h2>
+      <div className={styles.dealsGrid}>
+        {" "}
+        {/* Changed foodDisplay to dealsGrid */}
+        {meals.map(
+          (
+            item // Use item.id directly as key
+          ) => (
+            <Link
+              className={styles.dealCardLink} // Changed link to dealCardLink
               key={item.id}
-              price={item.price}
-              rating={item.rating}
-              image={item.image}
-              name={item.name}
-            />
-          </Link>
-        ))}
+              to={`/food-details/${item.name.replace(/\s+/g, "-")}`} // Better URL slug
+            >
+              <FoodCard
+                price={item.price}
+                rating={item.rating}
+                image={item.image}
+                name={item.name}
+              />
+            </Link>
+          )
+        )}
       </div>
-    </div>
+      {/* Optional: Add a "View All Deals" button */}
+      <div className={styles.viewAllContainer}>
+        <Link to="/deals" className={styles.viewAllButton}>
+          View All Deals
+        </Link>
+      </div>
+    </section>
   );
 };
 

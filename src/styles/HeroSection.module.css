@@ -1,113 +1,165 @@
-.parent {
-    background-position: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    height: 17rem;
-}
-.header {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-}
-.header span {
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    color: #fff;
-    font-size: 1.7rem;
-    animation: border 1s  0.5s infinite;
+/* Variables for consistency */
+:root {
+  --text-color-light: #fff;
+  --text-color-dark: #333;
+  --overlay-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+  --primary-button-bg: #f44336; /* Example: a vibrant red for action */
+  --primary-button-hover-bg: #d32f2f;
+  --secondary-color: #ffc107; /* Example: a warm yellow for accents */
+  --font-family-display: 'Playfair Display', serif; /* A more elegant font */
+  --font-family-body: 'Roboto', sans-serif; /* A clean, readable font */
 }
 
-.desc {
-    width: 16rem;
-    opacity: 0.8;
-    padding: 0.7rem;
-    background-color: #141418;
-    margin: 0.5rem;
-    color: #fff;
-    font-size: 1.1rem;
+/* Base Styles for the Hero Container */
+.heroContainer {
+  position: relative; /* Needed for overlay positioning */
+  width: 100%;
+  height: 80vh; /* Occupy 80% of viewport height for prominence */
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition: background-image 1s ease-in-out; /* Smooth transition for background image change */
+  overflow: hidden; /* Ensures nothing overflows if elements become too large */
 }
-.buttonBox {
-    display: flex;
-    justify-content: center;
+
+/* Overlay for text readability */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--overlay-color);
+  z-index: 1; /* Place it above the background but below content */
 }
-.subImage {
-    width: 3.2rem;
-    height: 3.2rem;
-    object-fit: cover;
-    margin-bottom: 0.5rem;
+
+/* Content Wrapper to centralize and constrain text */
+.contentWrapper {
+  position: relative; /* Position above the overlay */
+  z-index: 2;
+  text-align: center;
+  color: var(--text-color-light);
+  max-width: 90%; /* Max width on smaller screens */
+  padding: 1rem;
 }
-.main {
-    width: auto;
+
+.title {
+  font-family: var(--font-family-display);
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  animation: fadeIn 1s ease-out; /* Fade in animation */
 }
-.subs {
-    display: flex;
-    width: 60%;
-    height: 100%;
-    align-items: flex-end;
-    justify-content: space-evenly;
+
+.description {
+  font-family: var(--font-family-body);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 600px; /* Limit width for readability */
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.9;
+  animation: fadeIn 1.5s ease-out; /* Delayed fade in */
 }
-@media screen and (min-width: 500px) {
-    .header {
-        width: 18rem;
-    }
-    .header span {
-        font-size: 2.3rem;
-    }
-    .main {
-        margin-left: 1rem;
-    }
-    .parent {
-        display: flex;
-        flex-direction: row;
-        height: 20rem;
-    }
-    .buttonBox {
-        width: 18rem;
-    }
-    .desc {
-        font-size: 1.2rem;
-        width: 18rem;
-    }
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  animation: fadeIn 2s ease-out; /* Further delayed fade in */
 }
-@media screen and (min-width: 575px) {
-    .parent {
-        height: 25rem;
-    }
+
+.orderButton {
+  /* Customizing Material-UI Button */
+  background-color: var(--primary-button-bg) !important; /* Use !important to override MUI defaults if necessary */
+  color: var(--text-color-light) !important;
+  font-size: 1.1rem !important;
+  padding: 0.8rem 2rem !important;
+  border-radius: 50px !important; /* Pill-shaped button */
+  text-transform: uppercase !important;
+  font-weight: 600 !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3) !important;
+  transition: background-color 0.3s ease, transform 0.2s ease !important;
 }
-@media screen and (min-width: 800px) {
-    .parent {
-        background-position: center;
-        height: 30rem;
-    }
-    .header {
-        width: auto;
-    }
-    .header span {
-        font-size: 2.5rem;
-    }
-    .desc {
-        width: 30rem;
-        font-size: 1.2rem;
-    }
-    .buttonBox {
-        width: 30rem;
-        font-size: 14rem;
-    }
-    .main {
-        margin-top: 3rem;
-        margin-left: 1rem;
-    }
+
+.orderButton:hover {
+  background-color: var(--primary-button-hover-bg) !important;
+  transform: translateY(-2px) !important; /* Slight lift effect */
 }
-@media screen and (min-width: 900px) {
-    .parent {
-        height: 35rem;
-        margin-bottom: 2rem;
-    }
-    .header span {
-        font-size: 3.5rem;
-    }
-    .desc {
-        font-size: 1.4rem;
-    }
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Media Queries for Responsiveness --- */
+
+/* Small devices (phones, 480px and up) */
+@media screen and (min-width: 480px) {
+  .title {
+    font-size: 3.5rem;
+  }
+  .description {
+    font-size: 1.2rem;
+  }
+  .orderButton {
+    font-size: 1.2rem !important;
+    padding: 1rem 2.5rem !important;
+  }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media screen and (min-width: 768px) {
+  .heroContainer {
+    height: 90vh; /* Taller on tablets */
+  }
+  .contentWrapper {
+    max-width: 80%;
+  }
+  .title {
+    font-size: 4.5rem;
+  }
+  .description {
+    font-size: 1.3rem;
+  }
+}
+
+/* Large devices (desktops, 1024px and up) */
+@media screen and (min-width: 1024px) {
+  .heroContainer {
+    height: 100vh; /* Full viewport height on desktops */
+  }
+  .contentWrapper {
+    max-width: 70%;
+  }
+  .title {
+    font-size: 5.5rem; /* Larger font for desktop */
+  }
+  .description {
+    font-size: 1.4rem;
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media screen and (min-width: 1200px) {
+  .contentWrapper {
+    max-width: 60%;
+  }
+  .title {
+    font-size: 6rem;
+  }
+  .description {
+    font-size: 1.5rem;
+  }
 }

@@ -1,188 +1,268 @@
+/* Dark & Modern Bakery Color Palette (re-used from Reason section) */
+:root {
+  --bg-dark: #1A1A2E; /* Deep dark background */
+  --bg-dark-light: #2A2A3E; /* Slightly lighter dark for accents */
+  --text-light: #E0E0E0; /* Light text for contrast */
+  --text-muted: #B0B0B0; /* Muted text for descriptions */
+  --accent-gold: #FFC04D; /* Warm, inviting gold */
+  --accent-blue: #00ADB5; /* Vibrant teal/blue for pop */
+  --accent-pink: #FF6B6B; /* Soft, inviting pink */
+  --shadow-dark: rgba(0, 0, 0, 0.4); /* Darker shadow */
+  --border-radius-sm: 5px;
+  --border-radius-md: 10px;
+}
+
+.header {
+  background-color: var(--bg-dark); /* Dark primary background */
+  padding: 0.7rem 1.2rem; /* Slightly more padding */
+  margin: 0.5rem; /* Increased margin */
+  border-radius: var(--border-radius-md); /* Softer corners */
+  box-shadow: 0 4px 15px var(--shadow-dark); /* More prominent shadow */
+}
+
 .nav {
-    border-radius: 5px;
-    margin: 0.3rem;
-    padding: 0.2rem;
-    background-color:  rgb(35, 46, 56);
-    display: flex;
-    align-items: center;
-}
-.ul1{
-    display: none;
-    list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1300px; /* Slightly wider max content */
+  margin: 0 auto;
 }
 
-.ul2 {
-    padding: 0.5rem;
-    border: 1px solid ;
+.brandName {
+  color: var(--accent-gold); /* Brand name in gold accent */
+  font-size: 1.8rem; /* Larger brand name */
+  font-weight: 700;
+  letter-spacing: 0.08rem; /* Slightly more spacing */
+  text-decoration: none;
+  flex-shrink: 0;
+  transition: color 0.3s ease;
 }
-.ul2 li {
-    /* border: 1px solid #fff; */
-    display: flex;
-    align-items: center;
-    padding: 0.3rem;
+
+.brandName:hover {
+  color: var(--text-light); /* Hover effect for brand name */
 }
+
+/* Desktop Navigation */
+.navListDesktop {
+  display: none; /* Hidden by default */
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem; /* Increased gap between items */
+}
+
+.navListDesktop li {
+  display: flex;
+  align-items: center;
+}
+
+.navLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: var(--text-light); /* Light text for links */
+  padding: 0.6rem 1rem; /* Slightly more padding for links */
+  border: 1px solid transparent;
+  border-radius: var(--border-radius-sm);
+  transition: all 0.3s ease;
+  font-weight: 500; /* Slightly bolder text for links */
+}
+
+.navLink:hover {
+  border-color: var(--accent-blue); /* Teal/Blue accent on hover */
+  color: var(--accent-blue);
+  background-color: var(--bg-dark-light); /* Lighter dark background on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3); /* Subtle shadow on hover */
+}
+
 .icon {
-    margin-right: 0.4rem;
-}
-.ul2 li {
-    padding: 0.5rem;
-    cursor: pointer;
-}
-.name {
-    color: #fff;
-    font-size: 1.4rem;
-    font-weight: 700;
-    letter-spacing: 0.1rem;
-    margin-left: 0.5rem;
-}
-.link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: inherit;
-}
-.searchBox {
-    border-radius: 10px;
-    margin: 0.3rem;
-    border: 1px solid  rgb(65, 74, 84);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 0.2rem;
-    background-color:  inherit;
-
-}
-.searchButton:hover {
-    cursor: pointer;
+  margin-right: 0.6rem; /* More space for icons */
+  font-size: 1.3rem; /* Slightly larger icons */
 }
 
-.input {
-    margin: 0.1rem;
-    padding: 0.2rem 0.2rem;
-    color: #fff;
-    border: 0;
-    outline: none;
-    background-color:  inherit;
-}
-.input::placeholder {
-    color: #fff;
-}
-.brandName  {
-    display: none;
-    color: #fff;
+/* Mobile Specifics */
+.mobileActions {
+  display: flex;
+  gap: 1.5rem; /* More space between mobile icons */
+  align-items: center;
 }
 
-@media screen and (min-width: 300px) {
-    .menu {
-        margin-left: 0.5rem;
-    }
-    .searchBox {
-        width: 20rem;
-        margin-left: 1rem;
-    }
+.menuIcon,
+.searchIconMobile {
+  color: var(--text-light); /* Light icons */
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
 }
-@media screen and (min-width: 500px) {
-    .menu {
-        margin-left: 0.5rem;
-    }
-    .searchBox {
-        width: 20rem;
-        margin-left: 2rem;
-    }
-    .link {
-        padding: 0.3rem 0.6rem;
-    }
+
+.menuIcon:hover,
+.searchIconMobile:hover {
+  color: var(--accent-gold); /* Gold accent on hover */
+  transform: scale(1.1);
 }
+
+.searchBoxMobile {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 1.2rem; /* More padding */
+  background-color: var(--bg-dark); /* Dark background for search overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  box-shadow: 0 2px 8px var(--shadow-dark);
+}
+
+.searchInput {
+  flex-grow: 1;
+  padding: 0.7rem 1.2rem; /* More padding */
+  border: 1px solid var(--bg-dark-light); /* Slightly lighter dark border */
+  border-radius: var(--border-radius-md);
+  background-color: var(--bg-dark-light); /* Lighter dark background for input */
+  color: var(--text-light);
+  outline: none;
+  margin-right: 0.8rem; /* More space */
+  font-size: 1rem;
+}
+
+.searchInput::placeholder {
+  color: var(--text-muted); /* Muted placeholder text */
+}
+
+.closeSearch {
+  color: var(--text-light);
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.closeSearch:hover {
+  color: var(--accent-pink); /* Pink accent on hover */
+  transform: rotate(90deg); /* Spin effect for close */
+}
+
+.mobileMenuOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.95); /* Slightly darker overlay */
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeIn 0.4s ease-out; /* Slightly longer fade */
+}
+
+.closeMenu {
+  position: absolute;
+  top: 1.8rem; /* Adjusted position */
+  right: 1.8rem; /* Adjusted position */
+  color: var(--text-light);
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.closeMenu:hover {
+  color: var(--accent-pink);
+  transform: rotate(90deg);
+}
+
+.navListMobile {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+
+.navListMobile li {
+  margin-bottom: 2rem; /* More space between mobile links */
+}
+
+.navListMobile .navLink {
+  font-size: 1.6rem; /* Larger font for mobile links */
+  padding: 1.2rem 2.5rem; /* More padding */
+  display: inline-flex;
+  border-radius: var(--border-radius-md); /* Softer corners for mobile links */
+  transition: all 0.3s ease;
+}
+
+.navListMobile .navLink:hover {
+  background-color: var(--bg-dark-light);
+  color: var(--accent-gold); /* Gold accent on hover for mobile */
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Media Queries for Responsiveness */
+
+/* Tablets and larger phones */
+@media screen and (min-width: 600px) {
+  .brandName {
+    font-size: 2rem;
+  }
+
+  .searchBoxMobile {
+    padding: 1.8rem;
+  }
+  .searchInput {
+    padding: 0.9rem 1.4rem;
+    font-size: 1.15rem;
+  }
+}
+
+/* Desktops and larger tablets */
 @media screen and (min-width: 800px) {
-    .nav {
-        /* border: 2px solid #fff; */
-    }
-    
-    .brandName {
-        display: flex;
-        margin-left: 1rem;
-        font-size: 1.8rem;
-        font-weight: 700;
-        letter-spacing: 0.1rem;
-        margin-right: 3rem;
-    }
-    .icon {
-        /* border: 3px solid #df3939; */
-    }
-    .link {
-        padding: 0.3rem 0.6rem;
-        display: flex;
-        align-items: center;
-        border: 1px solid  rgb(48, 64, 79);
-    }
-    .menu {
-        display: none;
-    }
-    .ul1 {
-        width: 70%;
-        display: flex;
-        justify-content: space-around;
-    }
-    .link:hover {
-        animation: border 1s 0.3s infinite;
-    }
-    @keyframes border {
-        0% {
-            border-top: 1px solid aqua;
-        }
-        30% {
-            border-right: 1px solid aqua;
-        }
-        60% {
-            border-bottom: 1px solid aqua;
-        }
-        80% {
-            border-left: 1px solid aqua;
-        }
-    }
-    .ul1 li {
-        margin-left: 1rem;
-        
-        display: flex;
-        align-items: center;
-    }
-    .searchBox {
-        /* background-color: deeppink; */
-        width: 13rem;
-        margin-left: 2rem;
-    }
+  .menuIcon,
+  .mobileActions,
+  .searchIconMobile,
+  .searchBoxMobile {
+    display: none;
+  }
+
+  .navListDesktop {
+    display: flex;
+    flex-grow: 1;
+    justify-content: flex-end;
+  }
+
+  .brandName {
+    font-size: 2.2rem; /* Larger brand on desktop */
+    margin-right: 3rem; /* More space */
+  }
 }
 
+/* Larger screens */
 @media screen and (min-width: 1000px) {
-    .ul1 {
-        width: 55%;
-    }
-    .brandName {
-        margin-right: 17rem;
-    }
+  .navListDesktop {
+    gap: 3rem; /* Even more space between items */
+  }
+  .header {
+    padding: 0.9rem 2.5rem;
+  }
 }
-@media screen and (min-width: 1000px) {
-    .ul1 {
-        width: 49%;
-    }
-    .brandName {
-        margin-right: 18rem;
-        margin-left: 3rem;
-    }
-}
+
+/* Even larger screens */
 @media screen and (min-width: 1200px) {
-    .ul1 {
-        width: 45%;
-    }
-    .brandName {
-        margin-right: 26rem;
-    }
-}
-@media screen and (min-width: 1300px) {
-    .ul1 {
-        width: 40%;
-    }
-    .brandName {
-        margin-right: 26rem;
-    }
+  .header {
+    padding: 1rem 3rem;
+  }
+  .navLink {
+    padding: 0.7rem 1.2rem;
+    font-size: 1.05rem; /* Slightly larger text for main links */
+  }
+  .icon {
+    font-size: 1.4rem;
+  }
 }

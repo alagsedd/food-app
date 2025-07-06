@@ -1,62 +1,182 @@
-.parent {
-    margin-bottom: 0.5rem;
-}
-.header {
-    margin-top: 0.5rem;
-    margin-left: 1rem;
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.header span {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1.5rem;
-    letter-spacing: 0.01rem;
-    color: #d7d1d1;
-    animation: border 2s 2s infinite;
-}
-@keyframes border {
-    0%  {
-        border-bottom: 1px solid aqua;
-    }
-    100%  {
-        border-bottom: 1px solid deeppink;
-    }
-}
-.foodDisplay {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-.link {
-    color: inherit;
-    text-decoration: none;
+/* Dark & Modern Bakery Color Palette (re-used from other sections) */
+:root {
+  --bg-dark: #1A1A2E; /* Deep dark background */
+  --bg-dark-light: #2A2A3E; /* Slightly lighter dark for cards */
+  --text-light: #E0E0E0; /* Light text for contrast */
+  --text-muted: #B0B0B0; /* Muted text for descriptions */
+  --accent-gold: #FFC04D; /* Warm, inviting gold */
+  --accent-blue: #00ADB5; /* Vibrant teal/blue for pop */
+  --accent-pink: #FF6B6B; /* Soft, inviting pink */
+  --shadow-dark: rgba(0, 0, 0, 0.4); /* Darker shadow */
+  --border-radius-md: 10px;
+  --font-family-heading: 'Playfair Display', serif;
+  --font-family-body: 'Lato', sans-serif;
 }
 
-@media screen and (min-width: 375px) {
-    .header span {
-        font-size: 1.8rem;
-    }
-    .foodDisplay {
-    }
+.blackDealsSection {
+  padding: 3rem 1rem;
+  background-color: var(--bg-dark); /* Dark background for the section */
+  color: var(--text-light);
+  font-family: var(--font-family-body);
+  overflow: hidden; /* Ensures animations don't cause scroll issues */
 }
 
-@media screen and (min-width: 800px) {
-    .header span {
-        font-size: 1.8rem;
-    }
-    .foodDisplay {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-    .parent {
-        margin: 1rem;
-        border: 1px solid black;
-    }
+.sectionTitle {
+  text-align: center;
+  font-family: var(--font-family-heading);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  margin-bottom: 3rem; /* More space below title */
+  position: relative;
+  padding-bottom: 1rem;
+  color: var(--text-light);
+  animation: fadeInDown 1s ease-out; /* Match animation from other sections */
 }
-@media screen and (min-width: 900px) {
-    .header span {
-        font-size: 2.5rem;
-    }
+
+.sectionTitle span {
+  /* No specific styling for span if the main title handles it */
+  position: relative;
+}
+
+.sectionTitle span::after {
+  content: '';
+  position: absolute;
+  bottom: -10px; /* Adjust position relative to span */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px; /* Wider underline */
+  height: 4px;
+  background: linear-gradient(to right, var(--accent-gold), var(--accent-pink)); /* Gradient underline */
+  border-radius: 2px;
+  animation: expandLine 1.5s ease-out forwards;
+}
+
+.dealsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+  gap: 2rem; /* Space between cards */
+  max-width: 1300px;
+  margin: 0 auto 3rem auto; /* Center grid and add margin below */
+  padding: 0 1rem; /* Padding for mobile view */
+}
+
+.dealCardLink {
+  text-decoration: none;
+  color: inherit;
+  display: block; /* Ensures the link takes up the full card space */
+  animation: fadeInUp 1s ease-out forwards; /* Fade in animation for cards */
+  opacity: 0; /* Start hidden for animation */
+}
+
+/* Delay animation for each card */
+.dealCardLink:nth-child(1) { animation-delay: 0.2s; }
+.dealCardLink:nth-child(2) { animation-delay: 0.4s; }
+.dealCardLink:nth-child(3) { animation-delay: 0.6s; }
+.dealCardLink:nth-child(4) { animation-delay: 0.8s; }
+.dealCardLink:nth-child(5) { animation-delay: 1s; } /* Adjust as needed for more items */
+
+
+/* Styling for the FoodCard component (assuming it receives these styles or has its own) */
+/* If FoodCard needs specific styling from this module, ensure it's passed down or defined within FoodCard's own CSS module */
+/* For example, if FoodCard has a .foodCard class for its main container: */
+/*
+.dealCardLink .foodCard {
+    background-color: var(--bg-dark-light);
+    border-radius: var(--border-radius-md);
+    box-shadow: 0 5px 15px var(--shadow-dark);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dealCardLink .foodCard:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px var(--shadow-dark);
+}
+*/
+
+.viewAllContainer {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.viewAllButton {
+  display: inline-block;
+  padding: 0.8rem 2.5rem;
+  background-color: var(--accent-blue); /* Vibrant button color */
+  color: var(--text-light);
+  text-decoration: none;
+  border-radius: 50px; /* Pill shape */
+  font-weight: 600;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0, 173, 181, 0.4); /* Shadow matching button color */
+}
+
+.viewAllButton:hover {
+  background-color: var(--accent-gold); /* Gold on hover */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(255, 192, 77, 0.6); /* Gold shadow on hover */
+}
+
+
+/* --- Animations --- */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes expandLine {
+  from {
+    width: 0;
+  }
+  to {
+    width: 120px;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* --- Media Queries --- */
+@media (min-width: 600px) {
+  .sectionTitle {
+    font-size: clamp(2.5rem, 4.5vw, 3.8rem);
+  }
+  .dealsGrid {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .blackDealsSection {
+    padding: 4rem 2rem;
+  }
+  .dealsGrid {
+    gap: 2.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .blackDealsSection {
+    padding: 5rem 3rem;
+  }
+  .sectionTitle {
+    font-size: clamp(3rem, 4vw, 4.2rem);
+  }
+  .dealsGrid {
+    gap: 3rem;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Larger cards */
+  }
 }

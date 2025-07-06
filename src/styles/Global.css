@@ -1,22 +1,136 @@
-* {
-    padding: 0;
-    margin: 0;
-    font-size: 1rem;
-    line-height: 1.5;
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-}
-body {
-    color: #b2b2b6;
-    background-color: rgba(26,29,33,255) !important;
+/* Import global fonts and variables first, as defined in your global.css */
+/* Make sure your @import url(...) for fonts and the :root variables are at the very top of this file */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;600;700&family=Playfair+Display:wght@400;700&display=swap');
+
+/* --- Global CSS Variables for Dark & Modern Theme --- */
+:root {
+    /* Colors */
+    --bg-dark: #1A1A2E; /* Deep dark background */
+    --bg-dark-light: #2A2A3E; /* Slightly lighter dark for cards, accents */
+    --text-light: #E0E0E0; /* Light text for primary content */
+    --text-muted: #B0B0B0; /* Muted text for secondary info, descriptions */
+    --accent-gold: #FFC04D; /* Warm, inviting gold */
+    --accent-blue: #00ADB5; /* Vibrant teal/blue for pop */
+    --accent-pink: #FF6B6B; /* Soft, inviting pink */
+    --shadow-dark: rgba(0, 0, 0, 0.4); /* Darker, more pronounced shadows */
+
+    /* Fonts */
+    --font-family-heading: 'Playfair Display', serif;
+    --font-family-body: 'Lato', sans-serif; /* Recommended for readability */
+    --font-size-base: 1rem; /* Base font size, 16px */
+    --line-height-base: 1.6; /* Improved line height for readability */
+
+    /* Spacing & Radii */
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --border-radius-sm: 5px;
+    --border-radius-md: 10px;
+    --border-radius-lg: 15px; /* Added for more rounded elements */
 }
 
+/* --- Universal Reset & Base Styles --- */
+* {
+    box-sizing: border-box; /* Important for consistent sizing */
+    padding: 0;
+    margin: 0;
+    font-size: var(--font-size-base); /* Use global variable */
+    line-height: var(--line-height-base); /* Use global variable */
+    font-family: var(--font-family-body); /* Default body font */
+    color: inherit; /* Inherit color from parent (body) by default */
+}
+
+/* --- Body Styles --- */
+body {
+    background-color: var(--bg-dark); /* Use dark background variable */
+    color: var(--text-light); /* Default text color for the entire body */
+    -webkit-font-smoothing: antialiased; /* Improve font rendering */
+    -moz-osx-font-smoothing: grayscale; /* Improve font rendering */
+}
+
+/* --- Global Link Styles --- */
+a {
+    text-decoration: none; /* Remove default underline */
+    color: var(--accent-blue); /* Default link color */
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-gold); /* Hover effect for all links */
+}
+
+/* --- Global Content Container (renamed from .parent) --- */
+.global-container {
+    max-width: 1300px; /* Consistent max-width across sections */
+    margin-left: auto;
+    margin-right: auto;
+    /* Default padding for smaller screens, adjusted to avoid squishing content */
+    padding-left: var(--spacing-md);
+    padding-right: var(--spacing-md);
+}
+
+/* --- Media Queries for .global-container (adjust padding for larger screens) --- */
 @media screen and (min-width: 1000px) {
-    .parent {
-        margin: 0 4rem;
+    .global-container {
+        padding-left: var(--spacing-lg); /* Larger padding on desktop */
+        padding-right: var(--spacing-lg);
     }
 }
 @media screen and (min-width: 1200px) {
-    .parent {
-        margin: 0 8rem;
+    .global-container {
+        padding-left: 4rem; /* Even larger padding */
+        padding-right: 4rem;
     }
 }
+
+/* --- Root Container for React App --- */
+/* Your original #root styles, adapted for the dark theme */
+#root {
+  max-width: 1300px; /* Match global-container for consistent alignment */
+  margin: 0 auto; /* Center the root container */
+  padding: 0; /* Remove root padding if sections handle their own, or apply minimal padding */
+  text-align: center; /* Keep text centered if desired for overall app, but components handle their own alignment */
+  /* Ensure overflow is handled if you have elements extending beyond its boundaries */
+  overflow-x: hidden;
+}
+
+/* --- Unused/Placeholder Styles Clean-up --- */
+/* These styles appear to be from a default Vite/React setup and are likely not needed
+   for your bakery site. It's good practice to remove unused CSS. */
+/*
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+*/

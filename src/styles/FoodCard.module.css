@@ -1,59 +1,144 @@
-.parent {
-    width: 15rem;
-    border: 10px;
-    margin: 0.5rem;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid  rgb(48, 64, 79);
-}
-.image {
-    filter: contrast(110%);
-    border: 10px;
-    width: 100%;
-    object-fit: cover;
-    height: 7rem;
-}
-.other {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.5rem;
-}
-.name {
-    font-weight: 700;
-    letter-spacing: 0.01rem;
-}
-.price {
-    margin: 0.5rem;
+/* Dark & Modern Bakery Color Palette (re-used from other sections) */
+:root {
+  --bg-dark: #1A1A2E; /* Deep dark background */
+  --bg-dark-light: #2A2A3E; /* Slightly lighter dark for card background */
+  --text-light: #E0E0E0; /* Light text for contrast */
+  --text-muted: #B0B0B0; /* Muted text for secondary info */
+  --accent-gold: #FFC04D; /* Warm, inviting gold */
+  --accent-blue: #00ADB5; /* Vibrant teal/blue for pop */
+  --accent-pink: #FF6B6B; /* Soft, inviting pink */
+  --shadow-dark: rgba(0, 0, 0, 0.4); /* Darker shadow */
+  --border-radius-md: 10px;
+  --font-family-body: 'Lato', sans-serif; /* Consistent font */
 }
 
+.foodCard {
+  width: 100%; /* Make it fill its grid column */
+  background-color: var(--bg-dark-light); /* Slightly lighter dark background for card */
+  border-radius: var(--border-radius-md); /* Rounded corners */
+  box-shadow: 0 5px 15px var(--shadow-dark); /* Subtle, dark shadow */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden; /* Ensures image corners are rounded */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover */
+  cursor: pointer; /* Indicate it's clickable */
+}
+
+.foodCard:hover {
+  transform: translateY(-8px); /* Lift effect on hover */
+  box-shadow: 0 12px 25px var(--shadow-dark); /* More pronounced shadow on hover */
+}
+
+.foodImage {
+  width: 100%;
+  height: 10rem; /* Consistent height for images */
+  object-fit: cover; /* Ensures image covers the area without distortion */
+  filter: brightness(0.9) contrast(1.1); /* Subtle adjustment for dark theme */
+  border-bottom: 2px solid var(--bg-dark); /* Separator from content */
+}
+
+.infoSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem; /* Increased padding */
+  gap: 0.5rem; /* Gap between name and rating */
+}
+
+.foodName {
+  font-weight: 700;
+  letter-spacing: 0.02rem; /* Slightly more letter spacing */
+  color: var(--text-light); /* Light text for name */
+  font-size: 1.1rem; /* Slightly larger font for name */
+  flex-grow: 1; /* Allow name to take available space */
+  white-space: nowrap; /* Prevent name from wrapping prematurely */
+  overflow: hidden; /* Hide overflow if name is too long */
+  text-overflow: ellipsis; /* Add ellipsis for long names */
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  color: var(--accent-gold); /* Rating text in gold */
+  font-weight: 600;
+  font-size: 0.95rem; /* Slightly larger rating text */
+  flex-shrink: 0; /* Prevent rating from shrinking */
+}
+
+.starIcon {
+  margin-left: 0.3rem; /* Space between rating number and star */
+  color: var(--accent-gold) !important; /* Ensure star is gold */
+}
+
+.priceSection {
+  padding: 0.5rem 1rem 1rem; /* Padding for price section */
+  text-align: right; /* Align price to the right */
+}
+
+.priceText {
+  font-size: 1.3rem; /* Larger font size for price */
+  font-weight: 700;
+  color: var(--accent-blue); /* Vibrant color for price */
+}
+
+/* --- Media Queries for Responsiveness --- */
+
 @media screen and (min-width: 375px) {
-    .parent {
-        width: 10.2rem;
-    }
+  .foodImage {
+    height: 8rem; /* Slightly shorter image for smaller cards */
+  }
 }
+
 @media screen and (min-width: 475px) {
-    .parent {
-        width: 13rem;
-    }
+  .foodImage {
+    height: 9rem;
+  }
+  .foodName {
+    font-size: 1.15rem;
+  }
+  .priceText {
+    font-size: 1.4rem;
+  }
 }
-@media screen and (min-width: 575px) {
-    .parent {
-        width: 10.7rem;
-    }
+
+@media screen and (min-width: 600px) {
+  .foodImage {
+    height: 10rem;
+  }
+  .foodName {
+    font-size: 1.2rem;
+  }
+  .priceText {
+    font-size: 1.5rem;
+  }
 }
 
 @media screen and (min-width: 800px) {
-    .parent {
-        width: 13rem;
-    }
+  .foodImage {
+    height: 11rem; /* Taller image on larger screens */
+  }
+  .foodName {
+    font-size: 1.25rem;
+  }
+  .priceText {
+    font-size: 1.6rem;
+  }
 }
+
 @media screen and (min-width: 900px) {
-    .parent {
-        width: 16rem;
-    }
-    
-    .image {
-        height: 11rem;
-    }
+  .foodImage {
+    height: 12rem;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .foodImage {
+    height: 13rem;
+  }
+  .foodName {
+    font-size: 1.3rem;
+  }
+  .priceText {
+    font-size: 1.7rem;
+  }
 }

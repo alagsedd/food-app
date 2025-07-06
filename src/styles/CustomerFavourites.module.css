@@ -1,56 +1,69 @@
-.parent {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-wrap: wrap;
+.section {
+  padding: 2rem 1rem;
+  background-color: #1A1A2E;
 }
-.header {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
+
+.headerContainer {
+  max-width: 1200px;
+  margin: 0 auto 2rem;
+  text-align: center;
 }
-.header span {
-    font-family: 'Courier New', Courier, monospace;
-    color: #d7d1d1;
-    font-size: 1.2rem;
-    display: flex;
-    align-items: center;
-    animation: border 2s 2s infinite;
+
+.sectionTitle {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 2rem;
 }
-.link {
-    text-decoration: none;
-    color: inherit;
+
+.titleText {
+  font-family: 'Playfair Display', serif;
+  color: #E0E0E0;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: 0.05rem;
 }
-@keyframes border {
-    0%  {
-        border-bottom: 1px solid aqua;
-    }
-    100%  {
-        border-bottom: 1px solid deeppink;
-    }
+
+.titleDecoration {
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(90deg, #FFC04D, #FF6B6B);
 }
-.heart {
-    margin-left: 0.1rem;
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
-@media screen and (min-width: 375px) {
-    .header span {
-        font-size: 1.8rem;
-    }
+
+.cardLink {
+  text-decoration: none;
+  transition: transform 0.3s ease;
 }
-@media screen and (min-width: 800px) {
-    .header span {
-        font-size: 1.8rem;
-    }
-    .header {
-        margin-top: 2rem;
-    }
-    .parent {
-        margin: 1rem;
-        border: 1px solid black;
-    }
+
+.cardLink:hover {
+  transform: translateY(-5px);
 }
-@media screen and (min-width: 900px) {
-    .header span {
-        font-size: 2.5rem;
-    }
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .gridContainer {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+  
+  .section {
+    padding: 1.5rem 0.5rem;
+  }
 }

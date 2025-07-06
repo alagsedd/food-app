@@ -1,100 +1,137 @@
 import { useState } from "react";
 import styles from "../styles/NavBar.module.css";
-import { FaHome } from "react-icons/fa";
-import { IoMenuSharp } from "react-icons/io5";
-import { IoClose } from "react-icons/io5";
-import { FaRegNewspaper } from "react-icons/fa6";
+import { FaHome, FaRegNewspaper } from "react-icons/fa";
 import { MdEventNote } from "react-icons/md";
-import { IoLogIn } from "react-icons/io5";
+import { IoLogIn, IoMenuSharp, IoClose, IoSearch } from "react-icons/io5";
 import { Link } from "react-router-dom";
 
 const NavBar = () => {
-  const [toggleMenu, setToggleMenu] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const toggleSearch = () => {
+    setIsSearchOpen(!isSearchOpen);
+  };
+
   return (
-    <>
+    <header className={styles.header}>
       <nav className={styles.nav}>
-        <IoMenuSharp
-          className={styles.menu}
-          onClick={() => setToggleMenu(true)}
-          size="30"
-        />
+        <Link to="/" className={styles.brandName}>
+          A-Bakes
+        </Link>
 
-        {/* <div className={styles.searchBox}>
-          <input
-            placeholder=" Search Foods and snacks"
-            className={styles.input}
-            type="text"
-          />
-        </div> */}
-        <span className={styles.brandName}>A-Bakes</span>
-
-        <ul className={styles.ul1}>
+        {/* Desktop Navigation */}
+        <ul className={styles.navListDesktop}>
           <li>
-            <Link className={styles.link} to={"/"}>
-              {" "}
-              <FaHome className={styles.icon} size="23" /> <span>Home</span>
-            </Link>{" "}
+            <Link to="/" className={styles.navLink}>
+              <FaHome className={styles.icon} />
+              <span>Home</span>
+            </Link>
           </li>
-
           <li>
-            {" "}
-            <Link className={styles.link} to={"#"}>
-              {" "}
-              <FaRegNewspaper className={styles.icon} size="23" />
+            <Link to="/news" className={styles.navLink}>
+              <FaRegNewspaper className={styles.icon} />
               <span>News</span>
             </Link>
           </li>
-
           <li>
-            {" "}
-            <Link className={styles.link} to={"#"}>
-              <MdEventNote className={styles.icon} size="23" />{" "}
+            <Link to="/events" className={styles.navLink}>
+              <MdEventNote className={styles.icon} />
               <span>Events</span>
             </Link>
           </li>
-
           <li>
-            <Link className={styles.link} to={"sign-up"}>
-              {" "}
-              <IoLogIn className={styles.icon} size="23" /> <span>Sign up</span>
+            <Link to="/sign-up" className={styles.navLink}>
+              <IoLogIn className={styles.icon} />
+              <span>Sign Up</span>
             </Link>
           </li>
         </ul>
+
+        {/* Mobile Menu and Search Icons */}
+        <div className={styles.mobileActions}>
+          <IoSearch
+            className={styles.searchIconMobile}
+            onClick={toggleSearch}
+            size="25"
+            aria-label="Toggle Search"
+          />
+          <IoMenuSharp
+            className={styles.menuIcon}
+            onClick={toggleMenu}
+            size="30"
+            aria-label="Open Menu"
+          />
+        </div>
+
+        {/* Mobile Search Input */}
+        {isSearchOpen && (
+          <div className={styles.searchBoxMobile}>
+            <input
+              placeholder="Search foods and snacks"
+              className={styles.searchInput}
+              type="text"
+            />
+            <IoClose
+              className={styles.closeSearch}
+              onClick={toggleSearch}
+              size="25"
+              aria-label="Close Search"
+            />
+          </div>
+        )}
       </nav>
 
-      {toggleMenu && (
-        <ul className={styles.ul2}>
-          <li>
-            <IoClose size="25" onClick={() => setToggleMenu(false)} />
-          </li>
-
-          <li>
-            <Link className={styles.link} to={"/"}>
-              {" "}
-              <FaHome className={styles.icon} size="25" /> <span>Home</span>
-            </Link>{" "}
-          </li>
-
-          <li>
-            <FaRegNewspaper className={styles.icon} size="25" />
-            <span>News</span>
-          </li>
-
-          <li>
-            <MdEventNote className={styles.icon} size="25" />{" "}
-            <span>Events</span>
-          </li>
-
-          <li>
-            <Link className={styles.link} to={"sign-up"}>
-              {" "}
-              <IoLogIn className={styles.icon} size="25" />{" "}
-              <span>Login/Sign up</span>
-            </Link>
-          </li>
-        </ul>
+      {/* Mobile Navigation Overlay */}
+      {isMenuOpen && (
+        <div className={styles.mobileMenuOverlay}>
+          <IoClose
+            className={styles.closeMenu}
+            onClick={toggleMenu}
+            size="30"
+            aria-label="Close Menu"
+          />
+          <ul className={styles.navListMobile}>
+            <li>
+              <Link to="/" className={styles.navLink} onClick={toggleMenu}>
+                <FaHome className={styles.icon} />
+                <span>Home</span>
+              </Link>
+            </li>
+            <li>
+              <Link to="/news" className={styles.navLink} onClick={toggleMenu}>
+                <FaRegNewspaper className={styles.icon} />
+                <span>News</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/events"
+                className={styles.navLink}
+                onClick={toggleMenu}
+              >
+                <MdEventNote className={styles.icon} />
+                <span>Events</span>
+              </Link>
+            </li>
+            <li>
+              <Link
+                to="/sign-up"
+                className={styles.navLink}
+                onClick={toggleMenu}
+              >
+                <IoLogIn className={styles.icon} />
+                <span>Login/Sign Up</span>
+              </Link>
+            </li>
+          </ul>
+        </div>
       )}
-    </>
+    </header>
   );
 };
 

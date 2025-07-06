@@ -10,22 +10,28 @@ interface Props {
 
 const FavCard = ({ name, image, price, rating }: Props) => {
   return (
-    <div className={styles.parent}>
-      <img
-        className={styles.image}
-        src={image}
-        alt="Your browser doesn't support this image"
-      />
-      <div className={styles.other}>
-        <span className={styles.name}>{name}</span>{" "}
-        <span>
-          {rating}
-          <FaStar size="13" color="yellow" />
-        </span>
+    <div className={styles.card}>
+      <div className={styles.imageContainer}>
+        <img
+          className={styles.productImage}
+          src={image}
+          alt={name}
+          loading="lazy"
+        />
       </div>
 
-      <div className={styles.price}>
-        <span>GH₵{price}</span>
+      <div className={styles.details}>
+        <div className={styles.topRow}>
+          <h3 className={styles.productName}>{name}</h3>
+          <div className={styles.ratingContainer}>
+            <span className={styles.ratingValue}>{rating.toFixed(1)}</span>
+            <FaStar className={styles.starIcon} />
+          </div>
+        </div>
+
+        <div className={styles.priceContainer}>
+          <span className={styles.price}>GH₵{price.toFixed(2)}</span>
+        </div>
       </div>
     </div>
   );
